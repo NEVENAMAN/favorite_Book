@@ -28,7 +28,7 @@
         .welcome h1{
             margin-right: 900px;
         }
-        .welcome a{
+        a{
             text-decoration: underline;
         }
         hr{
@@ -46,6 +46,15 @@
         }
         .container h1{
             margin-left: -130px;
+        }
+        .error_message{
+            color: red;
+        }
+        .all_books h1{
+            margin-left: 0px;
+        }
+        .all_books a{
+            margin-left: 130px;
         }
     </style>
 </head>
@@ -86,7 +95,15 @@
             </form>
         </div>
         <div class="all_books">
-            <h1>All Books</h1>
+            <h1 >All Books</h1>
+            {% for book in books %}
+                {% if book.upload_book.id == user.id %}
+                    <a href="/editBook/{{book.id}}"> {{book.title}} </a><br>
+                {% else %}
+                        <a href="/viewBook/{{book.id}}"> {{book.title}} </a><br>
+                    {% endif %}
+                <i><p>( added by {{book.upload_book.first_name}} )</p></i>
+            {% endfor %}
             
         </div>
     </div>

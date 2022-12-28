@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+    <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/docs_min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap_min.css' %}">
+    <style>
+        .container{
+            width:800;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .welcome{
+            width:800;
+            
+            margin: 50px auto 0px;
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+        }
+        .welcome h1{
+            margin-right: 900px;
+        }
+        a{
+            text-decoration: underline;
+        }
+        hr{
+            width: 1450px;
+            background-color: black;
+            margin:10px auto 0px;
+        }
+        .container form{
+            margin-top:50px;
+            margin-left:-130px;
+        }
+        .actions{
+            display: flex;
+            justify-content: space-between;
+        }
+        .container h1{
+            margin-left: -130px;
+        }
+        .error_message{
+            color: red;
+        }
+        .all_books h1{
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome">
+        <h1>Welcome , {{user.first_name}}</h1>
+        <a href="/">Log Out</a>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="book_data">
+        <h3>{{book.title}}</h3><br>
+        <table>
+            <tr>
+                <td>Added by :</td>
+                <td>{{book.upload_book.first_name}} {{book.upload_book.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Added on :</td>
+                <td>{{book.created_at}}</td>
+            </tr>
+            <tr>
+                <td>Last update :</td>
+                <td>{{book.update_at}}</td>
+            </tr>
+            <tr>
+                <td>Description :</td>
+                <td>{{book.desc}}</td>
+            </tr>
+        </table>
+
+      </div>
+      <div class="who_like_book">
+        <h3>Users Who Like This Book :</h3>
+        {% for user in user_who_like %}
+            <h6>{{user.first_name}} {{user.last_name}}</h6>
+        {% endfor %}
+        <a href="/likeBook/{{book.id}}">Add to Favotite</a>
+      </div>
+    </div>
+</body>
+</html>
