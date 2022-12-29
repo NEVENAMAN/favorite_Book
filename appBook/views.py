@@ -78,11 +78,17 @@ def likeBook(request,BookId):
     UserId = request.session['userid'] 
     Like_Book(BookId,UserId)
     return redirect('/viewBook/'+str(BookId))
-    
+
 # update desc of book
 def update_desc_of_book(request,BookId):
     if request.method == "POST":
         desc_edit = request.POST['desc_edit']
+        print(desc_edit)
         Update_Desc_Book(BookId,desc_edit)
     return redirect('/editBook/'+str(BookId))
 
+# delete book from database by it is id
+def del_book(request,BookId):
+    if request.method == "POST":
+        Delete_Book(BookId)
+    return redirect('/viewBooksPage')

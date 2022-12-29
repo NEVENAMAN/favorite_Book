@@ -85,10 +85,11 @@
                 <td>Description :
                     <form action="/update_desc_of_book/{{book.id}}" method="post">
                         {% csrf_token %}
-                        <textarea  name="desc_edit" value="{{book.desc}}"></textarea>
-\                        <input type="submit" value="update">
+                        <textarea  name="desc_edit">{{book.desc}}</textarea>
+                        <input type="submit" value="update">
                     </form>
-                    <form>
+                    <form action="/del_book/{{book.id}}" method="post">
+                        {% csrf_token %}
                         <input type="submit" value="Delete" id="delete">
                     </form>
                 </td>

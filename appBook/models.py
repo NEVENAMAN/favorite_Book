@@ -102,7 +102,14 @@ def Get_User_favorite_book(BookId):
 def Update_Desc_Book(BookId,desc_edit):
     book = Book.objects.get(id = BookId)
     print("**** 1")
-    book.desc == desc_edit
+    print(book.id)
+    print("before : ",book.desc)
+    book.desc = desc_edit
     print("***** 2")
-    book.save()
-    print("***** 3")
+    print("afteer : ",book.desc)
+    return book.save()
+
+# delete book from database
+def Delete_Book(BookId):
+    book = Book.objects.get(id = BookId)
+    return book.delete()
