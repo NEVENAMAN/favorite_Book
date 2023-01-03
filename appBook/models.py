@@ -79,7 +79,7 @@ def Add_Book(request):
     return Book.objects.create(title = title , desc = desc , upload_book = user )
 
 def Get_all_book(request):
-    return Book.objects.all().order_by('-created_at').values()
+    return Book.objects.all().order_by('-created_at')[:2]
 
 def Get_User(id):
     return User.objects.get(id=id)

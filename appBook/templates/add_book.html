@@ -98,10 +98,10 @@
             <h1 >All Books</h1>
             {% for book in books %}
                 {% if book.upload_book.id == user.id %}
-                    <a href="/editBook/{{book.id}}"> {{book.title}} </a><br>
+                    <a href="/editBook/{{book.id}}"> {{book.title}} a</a><br>
                 {% else %}
-                        <a href="/viewBook/{{book.id}}"> {{book.title}} </a><br>
-                    {% endif %}
+                    <a href="/viewBook/{{book.id}}"> {{book.title}} b</a><br>
+                {% endif %}
                 <i><p>( added by {{book.upload_book.first_name}} )</p></i>
             {% endfor %}
             
